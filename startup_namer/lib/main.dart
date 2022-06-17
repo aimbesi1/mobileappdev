@@ -1,6 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-
+// Completed by Tony Imbesi, 6/17/2022
 void main() {
   runApp(const MyApp());
 }
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final wordPair = WordPair.random();
     return MaterialApp(
-      title: 'Startup Name Generator',
+      title: 'Worst Startup Names',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
@@ -39,7 +39,7 @@ class _RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Startup Name Generator'), actions: [
+      appBar: AppBar(title: const Text('World Startup Names'), actions: [
         IconButton(
           icon: const Icon(Icons.list),
           onPressed: _pushSaved,
