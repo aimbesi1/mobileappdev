@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "854124708286",
+    "project_id": "creepsupport2",
+    "storage_bucket": "creepsupport2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854124708286:android:961d9b3353226b6c66b9ef",
+        "android_client_info": {
+          "package_name": "com.aimbesi1.creepsupport2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854124708286-lkkihvq810lsunbctlq8edtivhg5bjh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1alvlYv65LZ3ihBczgKzhvT0oSKuBAe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854124708286-lkkihvq810lsunbctlq8edtivhg5bjh5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "854124708286-2i1as3t4qpb6pp7urce95pdlp1p15ra4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.aimbesi1.creepsupport2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
