@@ -1,4 +1,5 @@
-import 'package:creepsupport2/forms/registerform.dart';
+import '../forms/commentform.dart';
+import '../forms/registerform.dart';
 
 import '../forms/postform.dart';
 import '../model/post.dart';
@@ -10,6 +11,8 @@ import '../services/firestore_service.dart';
 //import '../model/user.dart' as m;
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
 import 'package:flutter/material.dart';
+
+import 'comments.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -86,7 +89,14 @@ class _HomeState extends State<HomePage> {
                                         .createdAt
                                         .toDate()
                                         .toString())
-                                  ])));
+                                  ]),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Comments(
+                                            originalPost: posts[index])));
+                              }));
             }
             return const Center(child: Text("No data yet"));
           }),
@@ -102,22 +112,16 @@ class _HomeState extends State<HomePage> {
   }
 
   void _showPostField() {
-    showModalBottomSheet<void>(
-        context: context,
-        builder: (context) {
-          return const PostForm();
-        });
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => const PostForm()));
   }
 
   void logout() async {
-    await _auth.signOut();
-    setState((() {
-      Navigator.pop(context);
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //       builder: (BuildContext context) => const RegisterForm()),
-      // );
-    }));
+    await _auth.signOut().then((value) => setState(() {
+          // Navigator.popUntil(context, ModalRoute.withName('/register'));
+          // Navigator.pushAndRemoveUntil(
+          //     context, '/', ModalRoute.withName('/'));
+          Navigator.pop(context);
+        }));
   }
 }

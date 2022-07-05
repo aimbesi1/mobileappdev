@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:creepsupport2/model/post.dart';
+import 'package:creepsupport2/model/comment.dart';
 import 'package:creepsupport2/services/firestore_service.dart';
 
 import '../pages/home.dart';
@@ -10,14 +11,16 @@ import 'package:flutter/material.dart';
 
 import '../widgets/loading.dart';
 
-class PostForm extends StatefulWidget {
-  const PostForm({Key? key}) : super(key: key);
+class CommentForm extends StatefulWidget {
+  const CommentForm({Key? key, required this.originalPost}) : super(key: key);
+
+  final Post originalPost;
 
   @override
-  State<PostForm> createState() => _PostFormState();
+  State<CommentForm> createState() => _CommentFormState();
 }
 
-class _PostFormState extends State<PostForm> {
+class _CommentFormState extends State<CommentForm> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirestoreService _fs = FirestoreService();
 
@@ -49,7 +52,7 @@ class _PostFormState extends State<PostForm> {
               onPressed: () {
                 setState(() {
                   // loading = true;
-                  postContent(context);
+                  postComment(context);
                 });
               },
               child: const Text("Post")),
@@ -58,11 +61,11 @@ class _PostFormState extends State<PostForm> {
     ));
   }
 
-  void postContent(BuildContext context) {
-    _fs.addPost({
+  void postComment(BuildContext context) {
+    _fs.addComment({
       "content": _content.text,
+      "threadID": widget.originalPost.id,
       "authorID": _auth.currentUser!.uid,
-      "imageURL": ""
     }).then((value) => Navigator.of(context).pop());
   }
 }

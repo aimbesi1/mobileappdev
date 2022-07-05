@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 // account like Twitter. After logging in, you must fill out every required credential for the
 // Firestore database.
 class ExternalAuth extends StatefulWidget {
-  const ExternalAuth({Key? key, required this.externalUser}) : super(key: key);
+  const ExternalAuth({Key? key}) : super(key: key);
 
-  final UserCredential externalUser;
+  // final UserCredential externalUser;
 
   @override
   State<ExternalAuth> createState() => _ExternalAuthState();
@@ -29,6 +29,7 @@ class _ExternalAuthState extends State<ExternalAuth> {
 
   @override
   Widget build(BuildContext context) {
+    //var id = _auth.currentUser?.uid;
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -80,7 +81,7 @@ class _ExternalAuthState extends State<ExternalAuth> {
   Future<void> register() async {
     if (_formKey.currentState!.validate()) {
       try {
-        _db.collection("users").doc(widget.externalUser.user!.uid).set({
+        _db.collection("users").doc(_auth.currentUser!.uid).set({
           "name": _fname.text,
           "lname": _lname.text,
           "bio": _bio.text,
@@ -90,11 +91,7 @@ class _ExternalAuthState extends State<ExternalAuth> {
 
         setState(() {
           loading = false;
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => const HomePage()),
-          );
+          Navigator.pushReplacementNamed(context, '/home');
         });
       } catch (e) {
         setState(() {

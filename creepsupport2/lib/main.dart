@@ -1,4 +1,7 @@
+import 'package:creepsupport2/forms/externalauth.dart';
+import 'package:creepsupport2/forms/registerform.dart';
 import 'package:creepsupport2/pages/driver.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +26,16 @@ class SocialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SocialApp',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: Driver(),
-    );
+        title: 'SocialApp',
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Driver(),
+          '/register': (context) => const RegisterForm(),
+          '/home': (context) => const HomePage(),
+          '/ext': (context) => const ExternalAuth(),
+        });
   }
 }

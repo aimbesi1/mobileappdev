@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../pages/home.dart';
+import '../services/firestore_service.dart';
 import '../style/style.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,7 +84,12 @@ class _LoginFormState extends State<LoginForm> {
                       onPressed: () {
                         forgot();
                       },
-                      child: const Text("Forgot Password??"))
+                      child: const Text("Forgot Password??")),
+                  OutlinedButton(
+                      onPressed: () {
+                        goBack();
+                      },
+                      child: const Text("Register new account"))
                 ],
               ),
             ),
@@ -153,13 +159,11 @@ class _LoginFormState extends State<LoginForm> {
       //     .then((value) => snackBar(context,
       //         "User registered successfully. Please check your email to verify this account."))
       //     .catchError((error) => snackBar(context, "FAILED. $error"));
+
+      // Return to driver
       setState(() {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  ExternalAuth(externalUser: loginResponse)),
-        );
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/', ModalRoute.withName('/'));
         loading = false;
       });
     } catch (e) {
@@ -178,5 +182,9 @@ class _LoginFormState extends State<LoginForm> {
     } else {
       snackBar(context, "Please input a valid email.");
     }
+  }
+
+  void goBack() {
+    Navigator.pop(context);
   }
 }
