@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "825934552999",
+    "project_id": "rankchat-3c9c8",
+    "storage_bucket": "rankchat-3c9c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825934552999:android:5b211fd82f26ff9c43a082",
+        "android_client_info": {
+          "package_name": "com.aimbesi1.groupchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825934552999-eqc2r9marrfnrs79nh38b8u2qs3p109a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNlLeY9RjKiBxdGivJYiDAN7uimJmo3h8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825934552999-eqc2r9marrfnrs79nh38b8u2qs3p109a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
